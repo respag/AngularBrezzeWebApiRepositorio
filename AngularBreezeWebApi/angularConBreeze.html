@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Cliente de un Web Api que consume una colección en memoria, con Angular y Breeze</title>
+</head>
+<body>
+    <h1>Cliente de un Web Api que consume una colección en memoria, con Angular y Breeze</h1>
+    <h2>Todos los productos:</h2>
+    <div ng-controller="ctrl">
+        <p ng-show="!results">Buscando...</p>
+        <ul ng-show="results" class="ng-hide">
+            <li ng-repeat="r in results">
+                    <strong><span ng-bind="r.Name"></span></strong>: <span ng-bind="r.Price|currency"></span>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div ng-controller="ctrl2">
+        <h2>Buscar por Id:</h2>
+        <input type="text" ng-model="valor" />
+        <button type="button" ng-click="find(valor)" ng-disabled="valor==''">Buscar</button>
+        <div ng-hide="resultado.length==0 || valor==''">
+            <strong><span ng-bind="resultado[0].Name"></span></strong>:  <span ng-bind="resultado[0].Price|currency"></span>
+        </div>
+    </div>
+    <br>
+    <a href="index.html">Cliente de un Web Api que consume una colección en memoria, con jQuery</a><br />
+    <a href="NorthwindCategories.html">Cliente de un Web Api que consume la tabla Categories de la base de datos Northwind, con Angular y Breeze</a><br />
+    <a href="NorthwindEmployees.html">Cliente de un Web Api que consume la tabla Employees de la base de datos Northwind, con Angular y Breeze</a>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="scripts/datajs.js"></script>
+    <script src="http://sampleservice.breezejs.com/Scripts/q.min.js"></script>
+    <script src="http://learn.breezejs.com/Scripts/breeze.debug.js"></script>
+    <script src="http://code.angularjs.org/1.2.10/angular.js"></script>
+    <script src="scripts/app2.js"></script>
+</body>
+</html>

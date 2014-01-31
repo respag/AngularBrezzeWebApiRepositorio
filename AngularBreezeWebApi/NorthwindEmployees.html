@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Consumiendo Nortwhwind Web Api con Angularjs y BreezeJS</title>
+</head>
+<body>
+    <h1>Consumiendo Nortwhwind Web Api con AngularJS y BreezeJS</h1>
+    <h2>Todos los Empleados:</h2>
+    <div ng-controller="ctrl">
+        <p ng-show="!results">Buscando...</p>
+        <ul>
+            <li ng-repeat="r in results">
+                <strong>{{r.FirstName}} {{r.LastName}}</strong> ({{r.City}})
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <h2>Buscar por ciudad</h2>
+    <div ng-controller="ctrl2">
+        <select ng-model="ciudad" ng-options="r for r in results" ng-click="filtra(filtro.campo,filtro.operador, ciudad)">
+            <option value="">--Seleccione una ciudad--</option>
+        </select>
+        <ul>
+            <li ng-repeat="r in resEmplByCity">
+                <strong>{{r.FirstName}} {{r.LastName}}</strong> ({{r.City}})
+            </li>
+        </ul>
+    </div>
+    <a href="index.html">Cliente de un Web Api que consume una colección en memoria, con jQuery</a><br />
+    <a href="angularConBreeze.html">Cliente de un Web Api que consume una colección en memoria, con Angular y Breeze</a><br>
+    <a href="NorthwindCategories.html">Cliente de un Web Api que consume la tabla Categories de la base de datos Northwind, con Angular y Breeze</a>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="scripts/datajs.js"></script>
+    <script src="http://sampleservice.breezejs.com/Scripts/q.min.js"></script>
+    <script src="http://learn.breezejs.com/Scripts/breeze.debug.js"></script>
+    <script src="http://code.angularjs.org/1.2.10/angular.js"></script>
+    <script src="scripts/Empl_app4.js"></script>
+</body>
+</html>

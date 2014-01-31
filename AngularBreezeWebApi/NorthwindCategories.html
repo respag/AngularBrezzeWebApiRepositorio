@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Consumiendo Nortwhwind Web Api con Angularjs y BreezeJS</title>
+</head>
+<body>
+    <h1>Consumiendo Nortwhwind Web Api con AngularJS y BreezeJS</h1>
+    <h2>Todas las Categorías:</h2>
+    <div ng-controller="ctrl">
+        <p ng-show="!results">Buscando...</p>
+        <ul>
+            <li ng-repeat="r in results">
+                <strong>{{r.CategoryName}}</strong>: {{r.Description}} ({{r.CategoryID}})
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div ng-controller="ctrl2">
+        <h2>Ordenar por:</h2>
+        <select ng-model="campo" ng-options="c.nombre for c in campos" ng-click="ordena(campo.nombre)">
+            <option value="">--Seleccione un criterio de ordenamiento--</option>
+        </select>
+        <input type="radio" ng-model="ord" value="asc">Ascendente
+        <input type="radio" ng-model="ord" value="desc">Descendente
+        <div>
+            <ul>
+                <li ng-repeat="r in results">
+                    <strong>{{r.CategoryName}}</strong>: {{r.Description}} ({{r.CategoryID}})
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div ng-controller="ctrl3">
+        <h2>Haciendo algunos filtros</h2>
+        <select ng-model="opcion" ng-options="o.texto for o in opcionesDeFiltrado"
+                ng-click="filtra(filtros[opcion.indice].campo, filtros[opcion.indice].operador, filtros[opcion.indice].valor)">
+            <option value="">--Seleccione un filtro--</option>
+        </select>
+        <div>
+            <ul>
+                <li ng-repeat="r in results">
+                    <strong><span ng-bind="r.CategoryName"></span></strong>: <span ng-bind="r.Description"></span> (<span ng-bind="r.CategoryID"></span>)</li>
+            </ul>
+        </div>
+    </div>
+    <a href="index.html">Cliente de un Web Api que consume una colección en memoria, con jQuery</a><br />
+    <a href="angularConBreeze.html">Cliente de un Web Api que consume una colección en memoria, con Angular y Breeze</a><br>
+    <a href="NorthwindEmployees.html">Cliente de un Web Api que consume la tabla Employees de la base de datos Northwind, con Angular y Breeze</a>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="scripts/datajs.js"></script>
+    <script src="http://sampleservice.breezejs.com/Scripts/q.min.js"></script>
+    <script src="http://learn.breezejs.com/Scripts/breeze.debug.js"></script>
+    <script src="http://code.angularjs.org/1.2.10/angular.js"></script>
+    <script src="scripts/app3.js"></script>
+</body>
+</html>
